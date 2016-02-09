@@ -7,8 +7,7 @@ I significant source of my confusion with this are the tutorials from [Programmi
 
 However, the [SPARQL](http://programminghistorian.org/lessons/graph-databases-and-SPARQL) tutorial on PH was excellent. There was a lot of information ~~took a couple rounds of reading to get through~~ and it was laid out in a, comparitively, really accessible way. The construction of this tutorial, in my opinion, provided more oppurtunities for experimentation, however, that may just be the nature of SPARQL and the British Museum's online collection. When I first attempted to experiment with obtaining information about donors of to the British Museum I kept getting errors, I realized that as a tool SPARQL is useful only if you already know how the database is built. You need to have some idea of the results you are looking for in order to create a proper SPARQL query.
 
-
-```# Programming Historian SPARQL Querry
+`# Programming Historian SPARQL Querry
 
 SELECT ?object
 WHERE {
@@ -18,7 +17,7 @@ WHERE {
 
   # That object type should have the label "print"
   ?object_type skos:prefLabel "print" .
-}```
+}`
 
 During our class discussion, the idea of constructing a query _backwards_ was brought up. Beginning with the object page in the collection and identifying the specifc query that you want to search and then editing your SPARQL to look for that field.
 
