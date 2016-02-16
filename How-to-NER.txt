@@ -1,0 +1,21 @@
+
+# Make new file and 
+
+$ mkdir NER
+$ cd NER
+
+# Copy zip download into this new directory
+
+$ unzip stanford-ner-2015-12-09.zip
+
+$ mkdir stanford-ner
+$ cp stanford-ner-2015-12-09/stanford-ner.jar stanford-ner/stanford-ner.jar
+$ cp stanford-ner-2015-12-09/classifiers stanford-ner/classifiers
+$ cp stanford-ner-2015-12-09/lib stanford-ner/lib
+
+$ echo " . . . Clearing all"
+$ rm -rf stanford-ner-2015-12-09 stanford-ner-2015-12-09.zip
+
+#Check to make sure it runs, double click on stanford-ner.jar, test it out with the sample text that is opened automatically by loading a classifier from file "Load CRF from file" got to the classifiers folder in your stanford-ner directory and pick one (as described in the exercise outline for NER, http://workbook.craftingdigitalhistory.ca/supporting%20materials/ner/#running-the-ner-via-its-gui)
+
+$ java -mx500m -cp stanford-ner.jar edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier classifiers/english.all.3class.distsim.crf.ser.gz -textFile textfile.txt -outputFormat inlineXML > ner_textfile.txt
