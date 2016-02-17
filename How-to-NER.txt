@@ -19,3 +19,5 @@ $ rm -rf stanford-ner-2015-12-09 stanford-ner-2015-12-09.zip
 #Check to make sure it runs, double click on stanford-ner.jar, test it out with the sample text that is opened automatically by loading a classifier from file "Load CRF from file" got to the classifiers folder in your stanford-ner directory and pick one (as described in the exercise outline for NER, http://workbook.craftingdigitalhistory.ca/supporting%20materials/ner/#running-the-ner-via-its-gui)
 
 $ java -mx500m -cp stanford-ner.jar edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier classifiers/english.all.3class.distsim.crf.ser.gz -textFile textfile.txt -outputFormat inlineXML > ner_textfile.txt
+
+# Before running the line above, change textfile.txt to the text file you wish to run through the program and change ner_textfile.txt to whatever name you want the NER tagged text file to be called.
