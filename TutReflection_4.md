@@ -51,3 +51,14 @@ This mystery was left unsolved.
 Overall I think, despite some issues, this is a fairly functional and straightforward tutorial. Though there are areas which lack detail and explanation, it does provide a good sense of what OpenRefine can do.
 
 ---
+
+Two key points to be taken away from this tutorial. First,
+>Don’t take your data at face value.
+
+and secondly,
+
+>All data is dirty
+
+OpenRefine was a really important tool for my project last year. I was dealing with a lot of provenance data pulled from a number of different websites and I needed to strip it down to just the names of people and businesses. OpenRefine helped me to not only find, alternate spellings (_i.e. different representations of the same value_) but because I was able to improve the quality of the data I was working with I was better able to analyze the data and cipher some of the inexplicable acronyms. In fact, during the process of cleaning my data with OpenRefine was actually where I began to my analysis of the data.
+
+With OpenRefine I discovered that everyone in the world of antiquities seemed to have their own idea of how to spell Nicolas Koutoulaski. 
