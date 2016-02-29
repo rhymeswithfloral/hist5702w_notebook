@@ -9,7 +9,7 @@ Before I say anything there is one thing I need to get off my chest... What is w
 
 ![Spelling out the not-obvious](https://github.com/rhymeswithfloral/hist5702w_notebook/blob/master/OpenRefine/OR_createnew2.png?raw=true)
 
-After you've created the new project, the tutorial's next section is called **Get to know your data**, while this a really important step before you start using OpenRefine, I don't think OpenRefine is the best place to "get to know your data," you're limited to the numbers of rows visible on the screen at a time and you can't adjust the way the information is displayed in the rows and columns. If I were working on a project of my own, I would have a much easier "getting to know my data" in a spreadsheet. Spreadsheet allows you to review all of your data on one page and provides you an opportunity to eliminate unnecessary rows or columns before you even start cleaning it.
+After you've created the new project, the tutorial's next section is called **Get to know your data**, while this is a really important step before you start using OpenRefine, I don't think OpenRefine is the best place to "get to know your data," you're limited to the numbers of rows visible on the screen at a time and you can't adjust the way the information is displayed in the rows and columns. If I were working on a project of my own, I would have a much easier "getting to know my data" in a spreadsheet. Spreadsheet allows you to review all of your data on one page and provides you an opportunity to eliminate unnecessary rows or columns before you even start cleaning it.
 
 ![But they are there! RIGHT IN FRONT OF YOU](https://github.com/rhymeswithfloral/hist5702w_notebook/blob/master/OpenRefine/OR_facets.png?raw=true)
 
