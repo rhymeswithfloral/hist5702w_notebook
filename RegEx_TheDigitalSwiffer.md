@@ -68,6 +68,9 @@ There were several rows that were missing both the city and the parish informati
 		(1645)\n\s\s\n
 		REPLACE:
 		\1, , ,
+
+![](https://github.com/rhymeswithfloral/hist5702w_project/Laurel/wget_weme/wget_brimstone/wget_regexclean19.png)
+
 The result should look like:
 					line 1314:	1645, , ,Suffolk
 					line 1315:	Suffolke,England
@@ -89,6 +92,9 @@ Lastly there were results that did not contain a parish.
 		(1645)\n(\w.+)\n\s\n(\w.+)
 		REPLACE:
 		\1,\2,,\3
+
+![](https://github.com/rhymeswithfloral/hist5702w_project/Laurel/wget_weme/wget_brimstone/wget_regexclean21.png)
+
 The result should look like:
 			line 154:  1645,Ramsey,,Essex
 			line 155:  Essex,England
@@ -146,9 +152,25 @@ The next step deals with the source line and the lines which contain "Appears in
 	REPLACE:
 		\1
 
+![](https://github.com/rhymeswithfloral/hist5702w_project/Laurel/wget_weme/wget_brimstone/wget_regexclean25.png)
+
 The final step is joining the Row ID numbers. With everything else joined together I am able to use a regular expression to locate the ID number without it also recognizing the date. This is an issue I was having in my first attempt at cleaning the file.
 
 _Find each line that contains only digits, the ID numbers, and join the line with the description line separating them with a comma._
 
 	FIND: ^([0-9]{1,})\n
 	REPLACE: \1,
+
+# ~~Almost~~ Squeaky clean!
+
+![](https://github.com/rhymeswithfloral/hist5702w_project/Laurel/wget_weme/wget_brimstone/wget_regexclean27.png)
+
+Note the multiple copies that had been made. Well actually! Note the other CSV file in the folder. I had gone through, cleaned and parsed and turned this webpage into a CSV file before. I had not keep track of what I had done and I hadn't taken any screen caps of my process. Nor was the final product, the CSV file, as well put together as it was this time. There is value ~~comma separated value~~ in going back trying again! But maybe there is a need to be quite so neurotic about it as I was. But I digress!
+
+![](https://github.com/rhymeswithfloral/hist5702w_project/Laurel/wget_weme/wget_brimstone/wget_regexclean31.png)
+
+When I opened up the CSV file I was fairly certain that I would find some mistakes. However, viewing the CSV as spreadsheet makes it much easier to locate mistakes and return to text editor to resolve them.
+
+Now I've got a worksheet, a clear process and sequence, and a beginning and end result I can spend another 5 hours writing a tutorial.
+
+~~This project has given me a stress rash that is slowly spreading up my arms.~~
