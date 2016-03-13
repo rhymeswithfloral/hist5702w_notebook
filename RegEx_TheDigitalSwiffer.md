@@ -24,6 +24,8 @@ Once this was done there was still some CSS coding around the top of the file, w
 
 For this particular set of data the webpage had already organized the data into rows and columns with HTML. So I just needed to make is CSV ready. _Gosh I love it when acronyms tell you exactly what you need to know (CSV stands for Comma Separated Values)._ The column names were located within the document, just below the line which reads "List of all Event assertions around a specific date." This would be line 64 for if the above step has not been taken yet or line 24 if it has.
 
+`ID,short description,date,city,parish,current county,old county,nation`
+
 Before organizing the data into _comma separated values_ I need to get rid of the commas which would cause problems for me. The first step I took was to change the format of publication information from `London: 1645, 7` to `London: 1645 p.7`.
 
 	FIND: ([0-9]{4}), ([0-9]{1,})
@@ -53,86 +55,100 @@ Once the file was all prepped and ready to collected into _comma separated value
 
 #### The joining begins!
 
-I started with nation and worked backwards.
+I started with nation and worked backwards because I knew that nation would always be England and that there were now blank cells in the _current county_ or _old county_ columns for any of the rows.
+
 		FIND:
 		(\s)+(England)
 		REPLACE:
 		,\2
 
-There are severals rows that are missing both the city and the parish information. Using this expression will take into account those blank cells.
+There were several rows that were missing both the city and the parish information. By adding , , I am accounting for that blank cell and ensuring that our information remain in the correct columns. This needs to be done for each of the location columns. I used these regular expressions in order to retain the empty cells because, as I mentioned, they function as a placeholder that maintains the organization of the other columns.
+
+		FIND:
+		(1645)\n\s\s\n
+		REPLACE:
+		\1, , ,
+The result should look like:
+					line 1314:	1645, , ,Suffolk
+					line 1315:	Suffolke,England
+
+This next expression takes into account any rows which had a blank cell in the city column.
+
+		FIND:
+		(1645)\n\s
+		REPLACE:
+		\1, ,
+The result should look like:
+					line 183:  1645, , St. Osyth; St. Ofes; St. Oses
+					line 184:  Essex
+					line 185:  Essex,England
+
+Lastly there were results that did not contain a parish.
+
+		FIND:
+		(1645)\n(\w.+)\n\s\n(\w.+)
+		REPLACE:
+		\1,\2,,\3
+The result should look like:
+			line 154:  1645,Ramsey,,Essex
+			line 155:  Essex,England
+
+After completing the above steps, I had managed to join together nearly all the columns contain location information onto one line. I just needed to join or two more lines together before I had more than half the _*values*_ for each result _*separated*_ by _*commas*_. For the final step I managed to create an expression that could be used twice (this kind of blew my mind, I'm not sure why).
+
+	FIND:
+	(1645,.+)\n(.+\w)
+	REPLACE:
+	\1,\2
+
+| Line | Before | After Once | After Twice|
+|------|--------|-------|------------|
+|line 54:| 1645,Ramsey,,Essex| 1645,Ramsey,,Essex,Essex,England| N/A|
+|line 55:| Essex,England| ---| N/A|
+|line 83:| 1645, , St. Osyth; St. Ofes; St. Oses| 1645, , St. Osyth; St. Ofes; St. Oses,Essex| 1645, , St. Osyth; St. Ofes; St. Oses,Essex,Essex,England|
+|line 184:| Essex| Essex,England| ---|
+|line 185:| Essex,England|  ---| ---|
+
+_I was, still am, pretty sure that creating a regular expression that I could use twice without fail means that I won something._
+
+From the get go I have been using 1645 as an anchor, of sorts, for all of my regular expression. Using 1645 and England as "anchors" has been really useful way of keeping track of which/what/where my regular expressions need focus on. This is something I have had a little bit of difficulty when it comes to using regular expressions, keeping track of what it is I am trying to clean, because every manipulation can change the location of a line or the format of the whole file. It can be easy to get lost. Now that I had combined those into one line, I needed to work on the rows which had data in all 5 location columns. Though I had already started to bring them together when I removed the extra row between old county and nation.
+
+This is an example of a result with all 5 columns filled. I am proud to say that as you can see, my previous expression has succesffuly managed to leave it un-~~fucked~~-scathed.
+
+	line 1890: 1645
+	line 1891: Manningtree
+	line 1892:  Manningtree
+	line 1893: Essex
+	line 1894: Essex, England
+
+Now I just need to continue to collect them together, continuing to use the date as an anchor of sorts. ~~Some of the sources which I was formatting earlier did not have page numbers therefore the line ended with just a date and accidentally got mixed up with our regex patterns~~ This is where I realized that I needed to be more careful about formatting the source and publication information. However, it turned out that during my final attempt I still missed something when I was trying to make sure all the source/publication information were between brackets. I didn't discover it until I had opened up the CSV in a spreadsheet. But I digress...
+
+I used this expression to bring together the date and location data for the results with 5 filled location columns.
+	FIND:
+	(1645)\n(.+\w)\n (.+\w)\n(.+\w)\n(.+\w)
+	REPLACE:
+	\1,\2,\3,\4,\5
+
+
+_Remove all blank lines_
 FIND:
-(1645)\n\s\s\n
-REPLACE:
-\1, , ,
+`^\n`
+REPLACE: `*leave blank*`. At this point I felt there were not problem were made from removing all the empty lines from the file. So my next step was to join the date and location lines to the end of the source and publication line, making sure that a _comma_ was _separating_ the source and date _values_.
 
-				#The result should look like:
-					line 1314	1645, , ,Suffolk
-					line 1315	Suffolke,England
+	FIND:
+		\s\n(1645.+)
+		REPLACE:
+		,\1
 
-This next expression takes into account any rows which had blank cells in the city column. By adding , , I am accounting for that blank cell and ensuring that our information remain in the correct columns. This needs to be done for each of the location columns.
-FIND:
-(1645)\n\s
-REPLACE:
-\1, ,
-				#The result should look like:
-					line 183  1645, , St. Osyth; St. Ofes; St. Oses
-					line 184  Essex
-					line 185  Essex,England
+The next step deals with the source line and the lines which contain "Appears in:". This became my next anchor, or point of focus, for my regular expressions. I need to have the description line above it as well as the source and publication information line from below it, join "Appears in:", which _**appears in**_ its own line. This expression manage to _kill to birds with one stone_.
 
-Lastly there are results that do not contain parish or old county.
-FIND:
-(1645)\n(\w.+)\n\s\n(\w.+)
-REPLACE:
-\1,\2,,\3
+	FIND:
+		\n(\sAppears in:)\n
+	REPLACE:
+		\1
 
-	#The result should look like:
-			line 154  1645,Ramsey,,Essex
-			line 155  Essex,England
+The final step is joining the Row ID numbers. With everything else joined together I am able to use a regular expression to locate the ID number without it also recognizing the date. This is an issue I was having in my first attempt at cleaning the file.
 
-The above results you'll want to use this expression to join them all onto one line.
-FIND:
-(1645,.+)\n(.+\w)
-REPLACE:
-\1,\2
+_Find each line that contains only digits, the ID numbers, and join the line with the description line separating them with a comma._
 
-	#If they still aren't all on one line, just repeat the exact same expression.
-
-For results that have data in all 5 location columns, I have already begun to collect them together when I removed the extra space between the country and the old county columns. For example:
-		line 1890 1645
-		line 1891 Manningtree
-		line 1892  Manningtree
-		line 1893 Essex
-		line 1894 Essex, England
-	#Now I just need to continue to collect them together, continuing to use the date as an anchor of sorts. BUT! Before I do this there are a couple of things mistakes that need to be cleaned up. Some of the sources which I was formatting earlier did not have page numbers therefore the line ended with just a date and accidentally got mixed up with our regex patterns
-FIND:
-(1645)\n(.+\w)\n (.+\w)\n(.+\w)\n(.+\w)
-REPLACE:
-\1,\2,\3,\4,\5
-
-Remove all blank lines
-FIND:
-^\n
-REPLACE: *leave blank*
-
-Join the date and location lines to the source line, separating it with a comma. I chose to get rid of some of the extra space there as well.
-FIND:
-\s\n(1645.+)
-REPLACE:
-,\1
-
-	#The next step deals with the source line and the lines which contain "Appears in:"
-
-Find each line that begins with "Appears in" followed by a line containing source information and format so that it joins the description line above it and the line with source information is joined to it.
-FIND: \n(\sAppears in:)\n
-REPLACE: \1
-
-	#The final step is joining the Row ID numbers.
-	#Now I am able to use a regular expression to locate the ID number without it also recognizing the date. {#} looks for a pattern containing a number with only a specific amount digits, but if I add a comma {#,} it tells it to look for either # or more.
-Find each line that contains only digits, this are the ID numbers, and join the line with the description line separating them with a comma.
-FIND: ^([0-9]{1,})\n
-REPLACE: \1,
-
-
-Join the date 1645, to the description description line with a comma separating the description value and the data value.
-FIND:\n\s\n(1645,)
-REPLACE:,\1
+	FIND: ^([0-9]{1,})\n
+	REPLACE: \1,
