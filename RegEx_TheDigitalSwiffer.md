@@ -1,5 +1,5 @@
 # RegEX: The Quicker Parser Upper
-### or "How I Went from [A]() to [B]()"
+### or "How I Went from [A](hist5702w_project/Laurel/wget_weme/wget_brimstone/1645_brimstone_copy.txt) to [B]()"
 _March 12, 2016_
 
 The regular expressions that I have included in this are actually pulled from the third worksheet I created to do the exact same job because as I was working I realized there were quicker and easier way to do earlier tasks. I was working on creating a tutorial for cleaning and transforming HTML files downloaded with Wget into CSV files, I wanted to make sure I was providing the best possible methods and that the order of steps made sense. So I would start over and create a new worksheet to track the expressions I used.
