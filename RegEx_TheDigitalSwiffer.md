@@ -9,14 +9,16 @@ The regular expressions that I have included in this are actually pulled from th
 First I needed to find all the HTML tags. The funny thing is I was attempting a whole bunch of real complex regular expressions before I realized I was just making things harder than they needed to be. Sometimes there are **too many** ways to skin a cat.
 
 _Find all HTML tags_
+
 	FIND:
 		<.+?>
 	REPLACE:
 		*leave blank*
 
 _Find all instances of `&nbsp;`_
+
 	FIND:
-		&nbsp;
+		`&nbsp;`
 	REPLACE:
 		*leave blank*
 
@@ -33,7 +35,12 @@ Before organizing the data into _comma separated values_ I need to get rid of th
 	REPLACE:
 		\1 p.\2
 
-Then I removed all commas with FIND:`,` REPLACE: `*leave blank*`
+Then I removed all commas with:
+
+	FIND:
+		,
+	REPLACE: 
+		*leave blank*`
 
 Since there were instances where the source information didn't include page numbers I decided that putting the source publication information between brackets will keep them from getting mixed up in our later expressions. However, this was not as easy as I had thought it would be. Each time I put something in brackets, I realized my expression was catching everything. So I ended up using a few different ones. Most of these I had first attempted with `164\d` but then around the end of my second cleaning I noticed that I had missed a few from different decades and I switched it `16\d\d`
 
@@ -49,6 +56,7 @@ Since there were instances where the source information didn't include page numb
 That was one of the more difficult moments, though as I type this I am realizing that there was an easier way to do it. You see, I found it difficult because I thought I needed to be careful about the order in which I used these expressions -- so as not to have single brackets around a few, double brackets around some, and triple backets around others. What I just realized was that I could have just done them in whatever order and then gone back with something like `\(\(.+\)\)`
 
 _Remove all doubles spaces at beginning of lines._
+
 	FIND:
 		^(  )
 	REPLACE: 
@@ -84,6 +92,7 @@ This next expression takes into account any rows which had a blank cell in the c
 		(1645)\n\s
 	REPLACE:
 		\1, ,
+
 The result should look like:
 					line 183:  1645, , St. Osyth; St. Ofes; St. Oses
 					line 184:  Essex
@@ -145,7 +154,7 @@ REPLACE: `*leave blank*`. At this point I felt there were not problem were made 
 
 	FIND:
 		\s\n(1645.+)
-		REPLACE:
+	REPLACE:
 		,\1
 
 The next step deals with the source line and the lines which contain "Appears in:". This became my next anchor, or point of focus, for my regular expressions. I need to have the description line above it as well as the source and publication information line from below it, join "Appears in:", which _**appears in**_ its own line. This expression manage to _kill to birds with one stone_.
@@ -165,6 +174,7 @@ _Find each line that contains only digits, the ID numbers, and join the line wit
 		^([0-9]{1,})\n
 	REPLACE:
 		\1,
+
 
 ### ~~Almost~~ Squeaky clean!
 
