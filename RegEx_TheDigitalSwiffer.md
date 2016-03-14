@@ -66,7 +66,7 @@ Once the file was all prepped and ready to collected into _comma separated value
 
 #### The joining begins!
 
-I started with nation and worked backwards because I knew that nation would always be England and that there were now blank cells in the _current county_ or _old county_ columns for any of the rows.
+I started with nation and worked backwards because I knew that nation would always be England and that there were no blank cells in the _current county_ or _old county_ columns for any of the rows.
 
 	FIND:
 		(\s)+(England)
