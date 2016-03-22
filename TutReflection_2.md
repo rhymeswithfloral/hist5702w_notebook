@@ -1,7 +1,7 @@
 # Tutorial Reflections
 _Feb 6, 2016_
 
-## Wget _(The 'W' stands for "with great power comes great responsibility")_
+## W_(ith great power comes great responsibility")_get
 
 The Programming Historian tutorials about [data-mining](http://programminghistorian.org/lessons/data-mining-the-internet-archive) and working with [Wget](http://programminghistorian.org/lessons/automated-downloading-with-wget) touched on some of the points that I made in my previous reflection. As one of my peers pointed out GNU Wget is a free software and GNU is sponsered by The Free Software Foundation [(FSF)](http://www.fsf.org/).
 >"Our mission is to preserve, protect and promote the freedom to use, study, copy, modify, and redistribute computer software, and to defend the rights of Free Software users" - FSF
