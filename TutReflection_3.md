@@ -1,11 +1,19 @@
 # Tutorial Reflections
 _Feb 8, 2016_
 
+## _HK-47:_ Query: Here I am surrounded by information, what do I do with it?
+
+A significant source of my confusion with this are the tutorials from [Programming Historian](http://programminghistorian.org/lessons), most which are written for Mac or Linux users, thereby requiring me to do a sort of _translation_ of the steps for Windows. At times this can be quite difficult because I'm no veteran of the coding/computing world. All I really know how to do is play video games and build an average-looking website.
+
+_HK-47:_ Statement: Windows is not meant for this kind of activity.
+
 Zotero was a pain. I continue to struggle with python. Well it's not really a struggle so much as I get confused with how and where I should be initiating python scripts. It is a shame because I really like scripts and I like how they provide a sort of step-by-step overview how I got from point A to point B. This process would/could/will have major implications on the conclusion drawn from research. Making python scripts I might use in my work available to the public also means that others could review my steps and see if there are any variables I missed or areas that need altering to improve the operations of the script. 
 
-I significant source of my confusion with this are the tutorials from [Programming Historian](http://programminghistorian.org/lessons), most which are written for Mac or Linux users, thereby requiring me to do a sort of _translation_ of the steps for Windows. At times this can be quite difficult because I'm no veteran of the coding/computing world. All I really know how to do is play video games and build an average-looking website.
+_HK-47:_ Suggestion: Perhaps, you are simply not reading the instructions?
 
-However, the [SPARQL](http://programminghistorian.org/lessons/graph-databases-and-SPARQL) tutorial on PH was excellent. There was a lot of information ~~took a couple rounds of reading to get through~~ and it was laid out in a, comparitively, really accessible way. The construction of this tutorial, in my opinion, provided more oppurtunities for experimentation, however, that may just be the nature of SPARQL and the British Museum's online collection. When I first attempted to experiment with obtaining information about donors of to the British Museum I kept getting errors, I realized that as a tool SPARQL is useful only if you already know how the database is built. You need to have some idea of the results you are looking for in order to create a proper SPARQL query.
+---
+
+The [SPARQL](http://programminghistorian.org/lessons/graph-databases-and-SPARQL) tutorial on PH was excellent. There was a lot of information ~~took a couple rounds of reading to get through~~ and it was laid out in a, comparitively, really accessible way. The construction of this tutorial, in my opinion, provided more oppurtunities for experimentation, however, that may just be the nature of SPARQL and the British Museum's online collection. When I first attempted to experiment with obtaining information about donors of to the British Museum I kept getting errors, I realized that as a tool SPARQL is useful only if you already know how the database is built. You need to have some idea of the results you are looking for in order to create a proper SPARQL query.
 
 ```
 # Programming Historian SPARQL Querry
@@ -36,3 +44,7 @@ WHERE {
   ?object_type skos:prefLabel "print" .
 }
 ```
+_HK-47_: Exclimnation: For a stupid, frail, non-compartmentalized meatbag you are pretty impressive.
+
+
+
