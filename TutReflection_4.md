@@ -1,7 +1,7 @@
 # Tutorial Reflections
 _February 26, 2016_
 
-## OpenRefine
+## Open~~Refine~~Divine
 
 Last year when I used OpenRefine I was flying by the seat of my pants, so to speak. I didn't refer to the [Programming Historian tutorial ](http://programminghistorian.org/lessons/cleaning-data-with-openrefine) at all and was just picking up things based on trial and error and from what I was reading in forums like [Stack Overflow](http://stackoverflow.com/). So this time around I decided to, as best as I could, pretend as though OpenRefine and I weren't as intimately familiar as we are with one another. Because of this decision I am going to jump straight into my experience with the tutorial for OpenRefine, followed by my own opinions on the wonders of OpenRefine and how great of a tool it was when I used it last year from [a project about antiquities dealers.](https://hist4805digitaldealer.files.wordpress.com)
 
