@@ -10,7 +10,7 @@ Digitally or traditionally, there will always be holes in your data, I can't all
 
 ### On Writing Tutorials...
 
-The frustration of writing tutorials while still learning to do things yourself is all the back-tracking and "do overs" that occur as you discover easier and more straightforward ways of accomplishing a task. I have cleaned the same file four different ways, each time was faster than the last. Who did I benefit by doing this? Not me. Though I'm proud of the fact that I've clearly been able to hone my skill, I'm frustrated by this itch I've wanted to scratch all semester, the itch to do something more with these new found skills.
+The frustration of writing tutorials while still learning to do things yourself is all the back-tracking and "do overs" that occur as you discover easier and more straightforward ways of accomplishing a task. I have cleaned the same file four different ways, each time was faster than the last. Who did I benefit by doing this? Not me. I end this semester with more practical skills than when I finished my undergraduate. I'm proud of the fact that I've clearly been able to learn and hone my skills, I'm finishing the semester with an immense itch to do something more with these new found skills.
 
 ### On Community...
 
